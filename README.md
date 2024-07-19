@@ -27,3 +27,10 @@ Run `ng test --code-coverage` to execute the unit tests via [Karma](https://karm
 
 - workout service
 ![service](https://github.com/user-attachments/assets/b5dd09bb-d670-45a0-adfc-c1fd9d923c46)
+
+## Edge Cases
+
+1. __Empty Inputs__: The input-form uses Angular Material form fields with required attributes, ensuring that the form cannot be submitted with empty fields.
+2. __Duplicate Entries__: The aggregateData method in the display component combines workouts for the same user, updating the workout count and total minutes.
+3. __Case Sensitivity__: The getFilteredData method converts the user name to lowercase, ensuring case-insensitive search.
+4. __Invalid Data Types__: The form ensures workout minutes are a number using the number type input.

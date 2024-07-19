@@ -1,0 +1,32 @@
+<div class="p-4 max-w-4xl mx-auto">
+  <h2 class="text-2xl font-bold mb-4">Workout Summary</h2>
+  <div class="flex gap-4 mb-4">
+    <mat-form-field class="flex-1">
+      <mat-label>Search by User Name</mat-label>
+      <input matInput type="text" [(ngModel)]="searchUserName" (input)="paginate({ first: 0, rows: rowsPerPage })">
+    </mat-form-field>
+    <mat-form-field class="flex-1">
+      <mat-label>Filter by Workout Type</mat-label>
+      <input matInput type="text" [(ngModel)]="filterWorkoutType" (input)="paginate({ first: 0, rows: rowsPerPage })">
+    </mat-form-field>
+  </div>
+  <p-table [value]="paginatedData">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Name</th>
+        <th>Workouts</th>
+        <th>Number of Workouts</th>
+        <th>Workout Minutes</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-workout>
+      <tr>
+        <td>{{ workout.userName }}</td>
+        <td>{{ workout.workoutType }}</td>
+        <td>{{ workout.count }}</td>
+        <td>{{ workout.workoutMinutes }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-paginator [rows]="rowsPerPage" [totalRecords]="getFilteredData().length" (onPageChange)="paginate($event)"></p-paginator>
+</div>
